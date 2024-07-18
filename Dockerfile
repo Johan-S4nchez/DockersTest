@@ -1,5 +1,4 @@
-FROM java:8
-MAINTAINER ltocode
+FROM openjdk:8
 EXPOSE 8080
-ADD predictive-text-tree-0.0.1-SNAPSHOT.jar /data/predictive-text-tree-0.0.1-SNAPSHOT.jar
-CMD java -jar /data/textpredict.jar
+ADD target/springboot-images-new.jar springboot-images-new.jar
+ENTRYPOINT ["java","-jar","/springboot-images-new.jar"]
