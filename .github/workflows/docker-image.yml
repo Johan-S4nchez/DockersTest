@@ -21,4 +21,4 @@ jobs:
         run: docker build . --file Dockerfile --tag johanversa/javarepositorio
 
       - name: Docker Push
-        run: docker push johanversa/javarepositorio
+        run: docker push johanversa/javarepositorio:tagname
