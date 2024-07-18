@@ -1,4 +1,4 @@
-name: GitHub Action CI/CD pipeline flow
+name: GitHub Action CI/CD pipeline flow Versa
 
 on:
   push:
