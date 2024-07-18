@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag Johan-S4nchez/DockersTest
+        run: docker build . --file Dockerfile --tag johanversa/javarepositorio
 
       - name: Docker Push
         run: docker push johanversa/javarepositorio:tagname
