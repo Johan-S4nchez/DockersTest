@@ -25,7 +25,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: johanversa/my-github-action-app
+        image: johanversa/javarepositorio
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
