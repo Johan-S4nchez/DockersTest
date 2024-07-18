@@ -1,0 +1,69 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Build and test
+        uses: docker/build-push-action@v6
+        with:
+          target: test
+          load: true
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64
+          push: true
+          target: final
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
+For more information about the YAML syntax for docker/build-push-action, refer to the GitHub Action README.
+
+Step three: Run the workflow
+Save the workflow file and run the job.
+
+Select Commit changes... and push the changes to the main branch.
+
+After pushing the commit, the workflow starts automatically.
+
+Go to the Actions tab. It displays the workflow.
+
+Selecting the workflow shows you the breakdown of all the steps.
+
+When the workflow is complete, go to your repositories on Docker Hub.
+
+If you see the new repository in that list, it means the GitHub Actions successfully pushed the image to Docker Hub.
+
+Summary
+In this section, you learned how to set up a GitHub Actions workflow for your application.
+
+Related information:
+
+Introduction to GitHub Actions
+Workflow syntax for GitHub Actions
+Next steps
+Next, learn how you can locally test and debug your workloads on Kubernetes before deploying.
+
+Test your deployment
+Edit this page
+
+Request changes
+
+Table of contents
+Prerequisites
+Overview
